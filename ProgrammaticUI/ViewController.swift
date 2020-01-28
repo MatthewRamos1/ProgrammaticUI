@@ -9,6 +9,15 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private let mainView = MainView()
+    //if doing programmatic UI implement and setup the view
+    //in loadView()
+    //loadView() gets called before viewDidLoad() and sets up the initial view of the controller
+    //do not call super when overriding loadView()
+    override func loadView() {
+        view = mainView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +35,10 @@ class ViewController: UIViewController {
     private func showSettings(_ sender: UIBarButtonItem) {
         let settingsVC = SettingsViewController()
         navigationController?.pushViewController(settingsVC, animated: true)
+    }
+    
+    private func resetAppColor(_ sender: UIButton) {
+        print("yooooo")
     }
 
 }
