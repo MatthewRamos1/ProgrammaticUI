@@ -12,9 +12,21 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemTeal
+        configureNavBar()
+        
+    }
+    
+    private func configureNavBar() {
+        navigationItem.title = "Programmatic UI"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(showSettings(_:)))
     }
 
+    @objc
+    private func showSettings(_ sender: UIBarButtonItem) {
+        let settingsVC = SettingsViewController()
+        navigationController?.pushViewController(settingsVC, animated: true)
+    }
 
 }
 
