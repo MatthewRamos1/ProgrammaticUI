@@ -9,21 +9,41 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    private var settingsView = SettingsView()
+    
+    private var colors = ["Red", "Green", "Orange", "Bubblegum", "Cyan", "Sky", "Yellow", "White", "Lime"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray
+        //configure delegate and datasource of pickerview
+        settingsView.pickerView.dataSource = self
+        settingsView.pickerView.delegate = self
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func loadView() {
+        view = settingsView
     }
-    */
 
+
+}
+
+extension SettingsViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        colors.count
+    }
+    
+    
+}
+
+extension SettingsViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        colors[row]
+    }
 }

@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
         configureNavBar()
+        mainView.resetButton.addTarget(self, action: #selector(resetAppColor(_:)), for: .touchUpInside)
         
     }
     
@@ -37,6 +38,7 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(settingsVC, animated: true)
     }
     
+    @objc
     private func resetAppColor(_ sender: UIButton) {
         print("yooooo")
     }
